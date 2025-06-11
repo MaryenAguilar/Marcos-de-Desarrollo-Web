@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+  <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+  <title>Marly Handmade</title>
+</head>
+<body>
+
+<!-- Header -->
+<div th:replace="~{header :: header}"></div>
+
+<!-- Carousel -->
+<div class="container-fluid px-0">
+  <div id="frontpageCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <!-- First Slide -->
+      <div class="carousel-item active" data-bs-interval="4000">
+        <img th:src="@{/img/seaPeace.jpg}" class="d-block w-100 img-fluid hero-img" alt="Serene Sea"/>
+        <h1 class="display-5 fw-bold mb-3">FIND YOUR PERFECT MARLY STATEMENT</h1>
+      </div>
+      <!-- Second Slide -->
+      <div class="carousel-item blue-bg" data-bs-interval="4000">
+        <div class="img-side">
+          <img th:src="@{/img/image.png}" class="sideImage" alt="Side Image"/>
+        </div>
+        <div class="text-side">
+          <h2 class="display-5 fw-bold mb-3">Discover Our New Arrivals</h2>
+          <p class="lead mb-4">Jewelry that whispers elegance and roars confidence.</p>
+          <a th:href="@{/newArrivals}" class="btn btn-lg explore-btn">Explore Now</a>
+        </div>
+      </div>
+      <!-- Third Slide -->
+      <div class="carousel-item" data-bs-interval="4000">
+        <img th:src="@{/img/jewels2.jpg}" class="d-block w-100 object-fit-cover" alt="Jewels Closeup">
+      </div>
+      <!-- Fourth Slide -->
+      <div class="carousel-item" data-bs-interval="4000">
+        <img th:src="@{/img/jewels2.jpg}" class="d-block w-100 object-fit-cover" alt="Jewels Reprise">
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

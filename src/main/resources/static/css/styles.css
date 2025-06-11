@@ -1,0 +1,120 @@
+/* Altura del carrusel principal */
+.carousel-inner {
+  height: 700px;  /* Ajusta esta altura según tus necesidades */
+}
+
+/* Estilo general de cada slide */
+.carousel-item {
+  height: 100%;  /* Usamos 100% para mantener la altura flexible */
+  width: 100%;
+  position: relative;
+  display: none; /* Oculta todas las diapositivas por defecto */
+  opacity: 0; /* Hace las diapositivas invisibles */
+  transition: opacity 0.5s ease; /* Efecto de transición para el cambio de diapositiva */
+}
+
+/* Muestra solo la diapositiva activa */
+.carousel-item.active {
+  display: block;
+  opacity: 1;  /* Muestra la diapositiva activa */
+}
+
+/*H1 text on first slide*/
+.carousel-item h1 {
+  color: #040F2E;
+  position: absolute;
+  top: 47%;  /* Vertically center the text */
+  left: 50%;  /* Horizontally center the text */
+  transform: translate(-50%, -50%);  /* Adjust to perfectly center the text */
+  font-family: 'Georgia', serif;
+  text-shadow: 2px 2px 5px #1B2A40;  /* Adds a subtle shadow for better contrast */
+  font-size: 2.6rem;  /* Adjust font size as needed */
+  text-align: center;
+  z-index: 10;  /* Ensures text stays above images */
+}
+
+/* Slides con fondo azul y contenido dividido (segunda diapositiva) */
+.carousel-item.blue-bg {
+  background-color: #040F2E;
+  display: flex;
+  flex-direction: row;
+  height: 100%; /* Usamos altura 100% para que se ajuste con el contenedor principal */
+  overflow: hidden; /* Oculta desbordes */
+}
+
+/* Contenedor de la imagen lateral en el segundo slide */
+.carousel-item.blue-bg .img-side {
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+/* Imagen general dentro de cualquier slide */
+.carousel-item img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;  /* Asegura que la imagen cubra todo el área sin distorsionarse */
+}
+
+/* Imagen lateral específica de la segunda diapositiva */
+.carousel-item.blue-bg .sideImage {
+  width: 57%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Estilo para el texto en el lado derecho */
+.text-side {
+  width: 50%;                /* Asegura que ocupe la mitad del slide */
+  height: 100%;              /* Igual que el alto del slide */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 0 2rem;
+  color: #F5E3C3;
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%); /* Centra el texto */
+}
+
+/* Estilo de los textos en el lado derecho */
+.text-side h2,
+.text-side p {
+  margin-bottom: 1rem;
+  word-wrap: break-word; /* Evita que las palabras largas se desborden */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); /* Mejorar la legibilidad */
+}
+
+/*Botón de Explore Now*/
+.explore-btn {
+  color: #040F2E !important;
+  background-color: #F5E3C3 !important; /* Cambia a tu color preferido */
+  border: 2px solid #1B2A40 !important;
+  transition: all 0.3s ease;
+}
+
+.explore-btn:hover {
+  background-color: #997C71 !important;
+  color: #fff;
+}
+
+
+
+
+
+
+/*VARIABLES MARLY COLOR
+White: FFFFFF;
+Black: 000000;
+Marly Blue: #040F2E;
+Chesnut Shadow: #997C71;
+Crema Suave: #F5E3C3;
+Navy Medio: #2C3E5E;
+Washed Denim: #5A7690;
+Deep abyss: #1B2A40;
+*/

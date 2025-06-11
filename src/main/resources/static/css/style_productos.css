@@ -1,0 +1,40 @@
+/* Estilos generales */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    position: relative;
+    overflow-x: hidden;
+}
+/* Tarjetas de producto */
+.card {
+    transition: transform 0.3s, box-shadow 0.3s;
+    background-color: #fff;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+
+
+/* Botones */
+.btn-pink {
+    background-color: #000;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 0;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+.btn-pink:hover {
+    background-color: #333;
+    color: white;
+}
+
