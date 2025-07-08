@@ -1,0 +1,61 @@
+.footer-custom {
+  background-color: #040F2E;
+  color: #F5E3C3;
+}
+
+.footer-title {
+  color: #F5E3C3;
+  font-weight: bold;
+}
+
+.footer-link {
+  color: #F5E3C3;
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}
+
+.footer-icon {
+  color: #F5E3C3;
+  font-size: 1.25rem;
+  margin-right: 15px;
+  transition: color 0.3s ease;
+}
+
+.footer-icon:hover {
+  color: #d1bfa3;
+}
+
+.email-input {
+  color: #F5E3C3; /* Color of the email text */
+  background-color: #040F2E; /* Background color to match footer */
+  border: 1px solid #F5E3C3; /* Border color to blend in with the footer */
+}
+
+.email-input:focus {
+  background-color: #040F2E; /* Maintain dark background */
+  color: #F5E3C3; /* Keep the text color consistent */
+  border: 1px solid #F5E3C3; /* Keep the border color */
+  outline: none; /* Remove outline */
+}
+
+.email-input::placeholder {
+  color: #F5E3C3; /* Color for placeholder text */
+}
+
+.subscribe-btn {
+  background-color: #F5E3C3;
+  color: #040F2E;
+}
+
+.subscribe-btn:hover { /*que se pinte al acercar cursor*/
+  background-color: #997C71;
+  color: #040F2E;
+}
+
+.copyright {
+  border-top: 1px solid #F5E3C3;
+  color: #F5E3C3;
+}

@@ -18,9 +18,9 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(HttpSession session) {
-        if (!isUserLogged(session)) {
-            return "redirect:/login?redirect=";
-        }
+//        if (!isUserLogged(session)) {
+//              return "redirect:/login?redirect=";
+//          }
         return "index";
     }
 
@@ -55,17 +55,11 @@ public class HomeController {
 
     @GetMapping("/newArrivals")
     public String newArrivals(HttpSession session) {
-        if (!isUserLogged(session)) {
-            return "redirect:/login?redirect=newArrivals";
-        }
         return "newArrivals";
     }
 
     @GetMapping("/aboutUs")
     public String aboutUs(HttpSession session) {
-        if (!isUserLogged(session)) {
-            return "redirect:/login?redirect=aboutUs";
-        }
         return "aboutUs";
     }
 
@@ -79,25 +73,16 @@ public class HomeController {
 
     @GetMapping("/rings")
     public String rings(HttpSession session) {
-        if (!isUserLogged(session)) {
-            return "redirect:/login?redirect=rings";
-        }
         return "rings";
     }
 
     @GetMapping("/necklace")
     public String necklace(HttpSession session) {
-        if (!isUserLogged(session)) {
-            return "redirect:/login?redirect=necklace";
-        }
         return "necklace";
     }
 
     @GetMapping("/bracelets")
     public String bracelets(HttpSession session) {
-        if (!isUserLogged(session)) {
-            return "redirect:/login?redirect=bracelets";
-        }
         return "bracelets";
     }
 }
