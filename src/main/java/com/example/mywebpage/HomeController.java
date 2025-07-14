@@ -85,6 +85,11 @@ public class HomeController {
     public String bracelets(HttpSession session) {
         return "bracelets";
     }
+
+    @GetMapping("/adminPage")
+    public String adminPage(HttpSession session) {
+        return "adminPage";
+    }
 }
 
 
