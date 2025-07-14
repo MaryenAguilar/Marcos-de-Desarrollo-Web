@@ -1,6 +1,10 @@
+body {
+    font-family: 'Lora', serif;
+}
+
 /* Altura del carrusel principal */
 .carousel-inner {
-  height: 700px;  /* Ajusta esta altura según tus necesidades */
+    height: 700px; /* Altura para desktop. La ajustaremos en media queries. */
 }
 
 /* Estilo general de cada slide */
@@ -10,7 +14,8 @@
   position: relative;
   display: none; /* Oculta todas las diapositivas por defecto */
   opacity: 0; /* Hace las diapositivas invisibles */
-  transition: opacity 0.5s ease; /* Efecto de transición para el cambio de diapositiva */
+  overflow: hidden;
+  transition: opacity 0.5s ease;
 }
 
 /* Muestra solo la diapositiva activa */
@@ -30,40 +35,102 @@
   text-shadow: 2px 2px 5px #1B2A40;  /* Adds a subtle shadow for better contrast */
   font-size: 2.6rem;  /* Adjust font size as needed */
   text-align: center;
-  z-index: 10;  /* Ensures text stays above images */
+  z-index: 10;
+  width: 90%; /* Limita el ancho del texto para evitar desbordamientos */
+  box-sizing: border-box; /* Asegura que el padding/border se incluya en el width */
+  padding: 0 15px; /* Pequeño padding para los bordes */
 }
 
-/* Slides con fondo azul y contenido dividido (segunda diapositiva) */
-.carousel-item.blue-bg {
+/*SECOND SLIDE*/
+.carousel-item.second-slide {
   background-color: #040F2E;
+  position: relative;
   display: flex;
-  flex-direction: row;
-  height: 100%; /* Usamos altura 100% para que se ajuste con el contenedor principal */
-  overflow: hidden; /* Oculta desbordes */
-}
-
-/* Contenedor de la imagen lateral en el segundo slide */
-.carousel-item.blue-bg .img-side {
-  width: 50%;
+  justify-content: flex-start;
+  align-items: center;
   height: 100%;
   overflow: hidden;
-  flex-shrink: 0;
 }
 
-/* Imagen general dentro de cualquier slide */
-.carousel-item img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;  /* Asegura que la imagen cubra todo el área sin distorsionarse */
+.carousel-item.second-slide .slide-wrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    flex-direction: row; /* Por defecto en desktop es fila */
 }
 
-/* Imagen lateral específica de la segunda diapositiva */
-.carousel-item.blue-bg .sideImage {
-  width: 57%;
-  height: 100%;
+.carousel-item.second-slide .img-side {
+   width: 45%;
+   height: 100%;
+   overflow: hidden;
+   display: flex;
+   align-items: center;
+   justify-content: flex-start;
+   padding: 0;
+   margin: 0;
+}
+
+.carousel-item.second-slide .sideImage {
+  max-width: 100%;
+  max-height: 100%;
   object-fit: cover;
-  display: block;
+  border-radius: 0;
 }
+
+.carousel-item.second-slide .text-side {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* o flex-end si quieres aún más a la derecha */
+  padding: 2rem;
+  color: #F5E3C3;
+  text-shadow: 3px 3px 6px #040F2E;
+}
+
+/* FIN SECOND SLIDE */
+
+/* Estilo para el texto en el lado derecho (TERCERA DIAPOSITIVA: "Don't miss out!") */
+/* ESTA REGLA ES ESPECÍFICA PARA LOS SLIDES QUE NO SON blue-bg (como el tercero) */
+
+.carousel-item.third-slide::before { /* <-- ¡NUEVO SELECTOR! */
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Color negro con 50% de opacidad */
+  z-index: 1; /* Por encima de la imagen, por debajo del texto */
+}
+
+.carousel-item.third-slide .text-side {
+  position: absolute; /* Esto lo coloca encima de la imagen */
+  top: 50%; /* Centrado vertical */
+  left: 60%; /* Mueve el punto de referencia un poco a la derecha */
+  transform: translate(-50%, -50%); /* Ajuste fino para centrar, pero el 60% inicial ya lo desplaza */
+  text-align: center; /* Centra el texto dentro de su propio contenedor */
+  width: 90%; /* Ancho del contenedor de texto sobre la imagen */
+  max-width: 700px; /* Para que el texto no sea demasiado ancho en pantallas grandes */
+  padding: 2rem !important; /* Mantenemos el !important para que prevalezca */
+  color: #F5E3C3; /* Color de texto claro para contraste */
+  text-shadow: 2px 2px 5px #040F2E; /* Sombra azul para el texto */
+  border-radius: 10px; /* Le damos esquinas redondeadas para un mejor aspecto */
+  box-sizing: border-box; /* Asegura que el padding se incluya en el ancho/alto */
+  z-index: 10; /* Asegura que el texto esté por encima de la imagen */
+  display: flex; /* Para centrar el contenido (h2, p) internamente */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* Centra horizontalmente el contenido interno */
+}
+
+/* ==================================================================== */
+/* === FIN DE ESTILOS TEXTO SECOND SLIDE DERECHA === */
+/* ==================================================================== */
+
 
 /* Estilo para el texto en el lado derecho */
 .text-side {
@@ -72,14 +139,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-end;
-  padding: 0 2rem;
+  padding: 2rem;
   color: #F5E3C3;
-  z-index: 2;
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%); /* Centra el texto */
+  text-shadow: 3px 3px 0 #040F2E;
 }
 
 /* Estilo de los textos en el lado derecho */
@@ -87,26 +149,537 @@
 .text-side p {
   margin-bottom: 1rem;
   word-wrap: break-word; /* Evita que las palabras largas se desborden */
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); /* Mejorar la legibilidad */
 }
 
 /*Botón de Explore Now*/
 .explore-btn {
   color: #040F2E !important;
-  background-color: #F5E3C3 !important; /* Cambia a tu color preferido */
+  font-weight: Semi-Bold !important;
+  background-color: #F5E3C3 !important;
   border: 2px solid #1B2A40 !important;
   transition: all 0.3s ease;
 }
 
 .explore-btn:hover {
   background-color: #997C71 !important;
+  font-weight: Semi-Bold !important;
   color: #fff;
 }
 
+/*Para deslizar el carrusel*/
+.custom-prev-icon,
+.custom-next-icon {
+  color: #F5E3C3;
+  font-size: 2.5rem;
+  padding: 0.5rem 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 
+/* --- New Section: COLLECTIONS Overview (Inspired by Mimosa) --- */
+
+.collections-overview-section {
+    padding: 80px 0; /* Top and bottom padding */
+    background-color: #f8f8f8; /* Light grey background, common for sections */
+    width: 100%; /* Asegura que la sección ocupe todo el ancho disponible */
+    box-sizing: border-box; /* Incluye padding en el ancho/alto total */
+}
+
+.collections-overview-section .intro-text {
+    font-family: 'Lora', serif;
+    font-weight: bold;
+    color: #040F2E;
+    font-size: 1.1rem;
+    max-width: 900px; /* Limit width for readability */
+    margin: 0 auto 20px auto; /* Center and add space below */
+    line-height: 1.6;
+     padding: 0 15px; /* Pequeño padding lateral para texto en pantallas muy pequeñas si el container-fluid no lo da */
+}
+
+.collections-overview-section .highlight-text {
+    font-family: 'Lora', serif;
+    color: #040F2E;
+    font-size: 1.25rem;
+    font-weight: bold;
+    max-width: 900px;
+    margin: 0 auto 50px auto; /* Center and add more space below */
+    line-height: 1.5;
+    padding: 0 15px; /* Pequeño padding lateral para texto en pantallas muy pequeñas */
+}
+
+.collections-overview-section .section-title {
+    font-family: 'Georgia', serif; /* Use a serif font for the main title */
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: #040F2E; /* Marly Blue for the title */
+    margin-bottom: 60px; /* Space below the main title before the grid */
+    text-transform: uppercase;
+    letter-spacing: 2px; /* Slight letter spacing */
+}
+
+.collections-grid {
+    display: flex;
+    color: #997C71;
+    flex-wrap: wrap; /* Permite que los ítems salten a la siguiente línea */
+    justify-content: center; /* Centra los ítems en la grilla */
+    gap: 20px; /* Espacio entre los ítems (filas y columnas) */
+    /* Añadir un padding al grid para que los items no toquen los bordes del container-fluid */
+    padding: 0 10px; /* Un pequeño padding a los lados dentro del container-fluid */
+    margin: 0 auto; /* Asegura que el grid se centre si tiene un max-width o si los items no llenan toda la fila */
+    max-width: 1200px; /* Limita el ancho máximo del grid para que no se estire demasiado en monitores muy grandes */
+}
+
+.collection-item {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box; /* Crucial para que padding se incluya en el width */
+
+    /* Regla base para desktop (4 columnas) */
+    width: calc(25% - 15px); /* (100% / 4) - (20px * 3 gaps / 4 items) = 25% - 15px */
+    max-width: 250px; /* Limita el tamaño individual de la tarjeta para que no crezca demasiado */
+}
+
+.collection-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.collection-item a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.collection-img {
+    width: 100%;
+    height: 180px; /* Altura fija para todas las imágenes */
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.collection-title {
+    font-family: 'Arial', sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #040F2E;
+    text-transform: uppercase;
+    margin-top: auto; /* Empuja el título hacia abajo si el contenido anterior es más corto */
+    margin-bottom: 0;
+    padding-top: 5px;
+}
+
+.collection-item a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.collection-img-wrapper { /* <-- NUEVO: Contenedor para la imagen */
+    width: 100%;
+    /* Utiliza padding-top para mantener una relación de aspecto fija */
+    /* Para una imagen que es más ancha que alta, como 4:3 (75%) o 16:9 (56.25%) */
+    /* Aquí usaremos 75% (similar a 4:3) o puedes probar 60% para algo más ancho */
+    padding-top: 75%; /* Esto crea un cuadrado si el ancho es igual al 100% y padding-top es 100% */
+    /* Para una relación 250px ancho x 180px alto -> 180/250 = 0.72 = 72% */
+    /* Vamos a usar 72% para que coincida con tu height original si se mantuviera la proporción */
+    padding-top: 72%; /* Relación de aspecto deseada para 250x180px */
+    position: relative; /* Necesario para posicionar la imagen dentro */
+    overflow: hidden; /* Oculta cualquier parte de la imagen que se desborde */
+    border-radius: 5px; /* Bordes redondeados para el wrapper */
+    margin-bottom: 10px; /* Espacio debajo del wrapper */
+}
+
+.collection-img {
+    position: absolute; /* Posiciona la imagen absolutamente dentro del wrapper */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Asegura que la imagen cubra todo el espacio sin distorsionarse */
+    border-radius: 5px; /* Bordes redondeados para la imagen */
+    /* margin-bottom: 10px; <-- Esto ahora va en el .collection-img-wrapper */
+}
+
+.collection-title {
+    font-family: 'Arial', sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #040F2E;
+    text-transform: uppercase;
+    margin-top: auto;
+    margin-bottom: 0;
+    padding-top: 5px;
+}
+
+/* --- Responsive adjustments --- */
+
+/* ... (resto de los media queries) ... */
+
+/* Actualiza las alturas de las imágenes dentro de los media queries si usas este nuevo método */
+/* No necesitarás 'height' en .collection-img dentro de los media queries
+   si ajustas el 'padding-top' del wrapper. */
+
+/* Ejemplo de cómo adaptar el padding-top si deseas diferentes proporciones por breakpoint */
+@media (min-width: 992px) { /* Desktop / Large Laptops (4 columnas) */
+    .collections-grid {
+        gap: 20px;
+    }
+    .collection-item {
+        flex: 0 0 calc(25% - 15px);
+        max-width: 250px;
+    }
+    .collection-img-wrapper {
+        padding-top: 72%; /* 180px / 250px = 0.72 */
+    }
+}
+
+@media (max-width: 991px) { /* Tablets (Medium devices): 2 items per row */
+    .collections-grid {
+        gap: 15px;
+    }
+    .collection-item {
+        flex: 0 0 calc(50% - 7.5px);
+        max-width: none;
+    }
+    .collection-img-wrapper {
+        padding-top: 72%; /* Mantenemos la misma proporción */
+        /* Si quieres que sean más "cuadradas" en tablets, podrías poner padding-top: 100%; */
+        /* Si quieres que se vean como tus 200px / ancho_item, recalcula (ej. 200/350 aprox = 57%) */
+    }
+    .carousel-inner {
+    height: 550px; /* Reduce la altura del carrusel */
+    }
+
+    /* Primer slide (solo texto H1) */
+    .carousel-item h1 {
+    font-size: 2.2rem; /* Reduce el tamaño de fuente */
+    padding: 0 20px; /* Asegura un padding lateral */
+    }
+
+  /* Segundo slide (imagen y texto lado a lado) */
+  .carousel-item.second-slide .slide-wrapper {
+    flex-direction: column; /* Apila imagen y texto verticalmente */
+    justify-content: center;
+  }
+  .carousel-item.second-slide .img-side {
+    width: 100%; /* La imagen ocupa todo el ancho */
+    height: 50%; /* La imagen ocupa la mitad de la altura disponible */
+    justify-content: center; /* Centra la imagen horizontalmente */
+  }
+  .carousel-item.second-slide .text-side {
+    width: 100%; /* El texto ocupa todo el ancho */
+    height: 50%; /* El texto ocupa la otra mitad */
+    padding: 1.5rem; /* Reduce el padding */
+  }
+  .carousel-item.second-slide .sideImage {
+    width: auto; /* Permite que la imagen se ajuste */
+    height: 100%; /* Ocupa la altura disponible */
+    object-fit: contain; /* Asegura que la imagen completa sea visible */
+  }
+
+  /* Tercer slide (texto sobre imagen) */
+  .carousel-item.third-slide .text-side {
+    left: 50%; /* Centra el texto horizontalmente */
+    transform: translate(-50%, -50%);
+    width: 85%; /* Ajusta el ancho para pantallas medianas */
+    padding: 1.5rem !important; /* Reduce el padding */
+    max-width: 600px; /* Limita el ancho máximo */
+  }
+  .carousel-item.third-slide .text-side h2 {
+    font-size: 2rem; /* Reduce el tamaño del título */
+  }
+  .carousel-item.third-slide .text-side p {
+    font-size: 1rem; /* Reduce el tamaño del párrafo */
+  }
+
+  .custom-prev-icon,
+  .custom-next-icon {
+    font-size: 2rem; /* Reduce el tamaño de las flechas */
+  }
+
+}
+
+@media (max-width: 767px) { /* Small devices (Landscape phones): 1 item per row */
+    .collections-overview-section {
+        padding: 40px 0;
+    }
+    .collections-grid {
+        gap: 20px;
+        padding: 0 15px;
+    }
+    .collection-item {
+        flex: 0 0 100%;
+        max-width: 320px;
+        margin: 0 auto;
+    }
+    .carousel-item.third-slide .text-side {
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .collection-img-wrapper {
+        padding-top: 72%; /* Misma proporción */
+        /* O, si quieres que sean más anchas para móviles, puedes reducir este valor */
+        /* Por ejemplo, para un ancho de 320px y una altura de 220px -> 220/320 = 0.6875 = 68.75% */
+        /* padding-top: 68.75%; */
+    }
+    .carousel-inner {
+    height: 450px; /* Reduce aún más la altura del carrusel */
+    }
+
+  /* Primer slide (solo texto H1) */
+  .carousel-item h1 {
+    font-size: 1.8rem; /* Reduce el tamaño de fuente */
+    width: 95%; /* Ocupa más ancho */
+  }
+
+  /* Segundo slide (imagen y texto apilados) */
+  .carousel-item.second-slide .text-side {
+    padding: 1rem; /* Más reducción de padding */
+  }
+  .carousel-item.second-slide .text-side h2 {
+    font-size: 1.8rem;
+  }
+  .carousel-item.second-slide .text-side p {
+    font-size: 0.9rem;
+  }
+
+  /* Tercer slide (texto sobre imagen) */
+  .carousel-item.third-slide .text-side {
+    width: 90%; /* Ajusta el ancho para móviles */
+    padding: 1rem !important; /* Más reducción de padding */
+  }
+  .carousel-item.third-slide .text-side h2 {
+    font-size: 1.6rem;
+  }
+  .carousel-item.third-slide .text-side p {
+    font-size: 0.85rem;
+  }
+
+  .custom-prev-icon,
+  .custom-next-icon {
+    font-size: 1.8rem; /* Más reducción para las flechas */
+  }
+}
+
+@media (max-width: 575px) { /* Extra small devices (Portrait phones) */
+    .collections-overview-section {
+        padding: 30px 0;
+    }
+    .collection-img-wrapper {
+        padding-top: 72%; /* Misma proporción */
+        /* O, si quieres que sean más pequeñas aún para móviles muy chicos: */
+        /* Por ejemplo, para 280px ancho y 180px alto -> 180/280 = 0.64 = 64% */
+        /* padding-top: 64%; */
+    }
+
+    .carousel-inner {
+    height: 380px; /* Altura mínima para móviles muy pequeños */
+    }
+
+    .carousel-item h1 {
+    font-size: 1.5rem;
+    }
+
+    .carousel-item.second-slide .img-side {
+    height: 40%; /* Ajuste de altura para imagen */
+    }
+    .carousel-item.second-slide .text-side {
+    height: 60%; /* Ajuste de altura para texto */
+    padding: 0.8rem;
+    }
+    .carousel-item.second-slide .text-side h2 {
+    font-size: 1.5rem;
+    }
+    .carousel-item.second-slide .text-side p {
+    font-size: 0.8rem;
+    }
+
+    .carousel-item.third-slide .text-side {
+    padding: 0.8rem !important;
+    }
+    .carousel-item.third-slide .text-side h2 {
+    font-size: 1.4rem;
+    }
+    .carousel-item.third-slide .text-side p {
+    font-size: 0.8rem;
+    }
+
+    .explore-btn {
+    font-size: 0.9rem; /* Reduce el tamaño de fuente del botón */
+    padding: 0.5rem 1rem !important; /* Ajusta el padding del botón */
+    }
+    .custom-prev-icon,
+    .custom-next-icon {
+    font-size: 1.5rem;
+    }
+}
+/* --- FIN New Section: COLLECTIONS Overview (Inspired by Mimosa) --- */
+
+/* --- Testimonials (Inspired by "The Way You Love Us" / "Rave Reviews") --- */
+
+.testimonials-section {
+    padding: 80px 0; /* Espacio superior e inferior de la sección */
+    background-color: #f8f8f8; /* Fondo gris claro, consistente con tu sección de colecciones */
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center; /* Centra el título y el grid en general */
+}
+
+.testimonials-section .section-title {
+    /* Reutiliza el estilo de tu título de sección para consistencia */
+    font-family: 'Georgia', serif;
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: #040F2E; /* Tu color "Marly Blue" */
+    margin-bottom: 60px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.testimonials-grid {
+    display: grid;
+    /* Esto crea un grid responsive:
+       - auto-fit: crea tantas columnas como quepan.
+       - minmax(300px, 1fr): cada columna tendrá un mínimo de 300px y ocupará una fracción igual del espacio disponible. */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px; /* Espacio entre las tarjetas (tanto filas como columnas) */
+    max-width: 1200px; /* Ancho máximo para el grid, consistente con tu .collections-grid */
+    margin: 0 auto; /* Centra el grid dentro de .container */
+    padding: 0 15px; /* Pequeño padding lateral para que no toque los bordes en pantallas pequeñas */
+}
+
+.testimonial-card {
+    background-color: #fff; /* Fondo blanco para las tarjetas */
+    padding: 30px; /* Espacio interno de las tarjetas */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Sombra suave para un efecto de "flotación" */
+    text-align: left; /* Alinea el texto a la izquierda dentro de la tarjeta */
+    display: flex; /* Usamos flexbox para el contenido interno */
+    flex-direction: column; /* Apila el contenido verticalmente */
+    justify-content: space-between; /* Empuja rating/quote hacia arriba, autor/fecha hacia abajo */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Suave transición al pasar el ratón */
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px); /* Pequeño levantamiento al pasar el ratón */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12); /* Sombra más pronunciada al pasar el ratón */
+}
+
+.testimonial-card .rating {
+    color: #ffc107; /* Color dorado para las estrellas */
+    font-size: 1.5rem; /* Tamaño de las estrellas */
+    margin-bottom: 15px; /* Espacio debajo de las estrellas */
+    text-align: center; /* Centra las estrellas si quieres, o déjalo en left */
+}
+
+.testimonial-card .rating .star {
+    /* Estilo individual para cada estrella si lo necesitas */
+    margin: 0 2px;
+}
+
+.testimonial-card .quote {
+    font-family: 'Lora', serif !important;
+    color: #040F2E !important;
+    font-style: italic; /* Texto de la cita en cursiva */
+    line-height: 1.6; /* Espaciado entre líneas para legibilidad */
+    margin-bottom: 20px; /* Espacio debajo de la cita */
+    flex-grow: 1; /* Permite que la cita ocupe el espacio disponible */
+}
+
+.testimonial-card .author {
+    font-weight: bold; /* Nombre del autor en negrita */
+    font-family: 'Lora', serif !important;
+    color: #1B2A40 !important;
+    margin-bottom: 5px; /* Espacio debajo del autor */
+}
+
+.testimonial-card .date,
+.testimonial-card .product { /* Para la opción "Rave Reviews" si la usas */
+    font-family: 'Lora', serif !important;
+    color: #997C71 !important;
+    font-size: 0.9rem; /* Tamaño de fuente más pequeño */
+}
+
+/* --- FIN Testimonials (Inspired by "The Way You Love Us" / "Rave Reviews") --- */
 
 
+/* --- Responsive Adjustments for Testimonials --- */
+
+/* Medium devices (tablets, hasta 991px) */
+@media (max-width: 991px) {
+    .testimonials-section .section-title {
+        font-size: 2.4rem; /* Reduce el tamaño del título */
+        margin-bottom: 40px;
+    }
+    .testimonials-grid {
+        gap: 20px; /* Reduce el gap para pantallas más pequeñas */
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Permite que las tarjetas sean más pequeñas */
+    }
+    .testimonial-card {
+        padding: 25px; /* Reduce el padding de las tarjetas */
+    }
+}
+
+/* Small devices (landscape phones, hasta 767px) */
+@media (max-width: 767px) {
+    .testimonials-section {
+        padding: 60px 0; /* Reduce el padding de la sección */
+    }
+    .testimonials-section .section-title {
+        font-size: 2rem; /* Más reducción del título */
+        margin-bottom: 30px;
+    }
+    .testimonials-grid {
+        grid-template-columns: 1fr; /* Una sola columna para móviles */
+        max-width: 350px; /* Limita el ancho en móviles para que no se estire demasiado */
+        padding: 0 20px; /* Padding para evitar que las tarjetas toquen los bordes */
+    }
+    .testimonial-card {
+        padding: 20px; /* Más reducción de padding */
+    }
+    .testimonial-card .rating {
+        font-size: 1.3rem;
+    }
+    .testimonial-card .quote {
+        font-size: 0.95rem;
+    }
+    .testimonial-card .author,
+    .testimonial-card .date,
+    .testimonial-card .product {
+        font-size: 0.85rem;
+    }
+}
+
+/* Extra small devices (portrait phones, hasta 575px) */
+@media (max-width: 575px) {
+    .testimonials-section {
+        padding: 40px 0;
+    }
+    .testimonials-section .section-title {
+        font-size: 1.8rem;
+    }
+    .testimonials-grid {
+        gap: 15px;
+        padding: 0 15px;
+    }
+    .testimonial-card {
+        padding: 15px;
+    }
+}
 
 /*VARIABLES MARLY COLOR
 White: FFFFFF;
