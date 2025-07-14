@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet"> <!-- Bootstrap css file link -->
+    <script src="js/bootstrap.bundle.min.js"></script> <!-- Bootstrap js file link -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Marly Handmade: New Arrivals</title>
+  </head>
+  <body>
+
+    <!--LINK TO HEADER-->
+    <div th:replace="~{header :: header}"></div>
+
+
+      <div class="container">
+        <h1 class="page-title">New Arrivals</h1>
+    
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+    
+          <!-- Product 1 -->
+          <div class="col">
+            <div class="card product-card">
+              <img src="img/earringClayBlack.jpg" class="card-img-top product-img" alt="Product 1">
+              <div class="card-body product-info">
+                <h5 class="product-title">🖤 Modern Disc Earrings</h5>
+                <h6 class="product-description">Bold yet minimal. These matte black statement earrings add a sleek touch to any outfit.</h6>
+                <p class="product-price">$28.00</p>
+              </div>
+            </div>
+          </div>
+    
+          <!-- Product 2 -->
+          <div class="col">
+            <div class="card product-card">
+              <img src="img/earringsClayFucsia.jpg" class="card-img-top product-img" alt="Product 2">
+              <div class="card-body product-info">
+                <h5 class="product-title">💗 Chunky Link Earrings</h5>
+                <h6 class="product-description">Playful and bold. A vibrant chain bracelet that makes a statement with every movement.</h6>
+                <p class="product-price">$18.00</p>
+              </div>
+            </div>
+          </div>
+    
+          <!-- Product 3 -->
+          <div class="col">
+            <div class="card product-card">
+              <img src="img/EarringsWireHeart.jpg" class="card-img-top product-img" alt="Product 3">
+              <div class="card-body product-info">
+                <h5 class="product-title">💧 Heart Drop Earrings</h5>
+                <h6 class="product-description">Romantic and delicate. Gold wire hearts with crystal-like drops—perfect for soft, dreamy looks.</h6>
+                <p class="product-price">$22.00</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 4 -->
+          <div class="col">
+            <div class="card product-card">
+              <img src="img/earringWirePlanets.jpg" class="card-img-top product-img" alt="Product 4">
+              <div class="card-body product-info">
+                <h5 class="product-title">🌙 Orbit Hoops</h5>
+                <h6 class="product-description">Inspired by lunar movement. Lightweight and graceful with golden concentric circles and tiny accents</h6>
+                <p class="product-price">$28.00</p>
+              </div>
+            </div>
+          </div>
+    
+          <!-- Product 5 -->
+          <div class="col">
+            <div class="card product-card">
+              <img src="img/necklacesDosBeachy.jpg" class="card-img-top product-img" alt="Product 5">
+              <div class="card-body product-info">
+                <h5 class="product-title">🐚 Pearl Drift Necklace</h5>
+                <h6 class="product-description">A mix of classic and modern. Irregular pearls with soft-blue glass beads on a minimalist strand.</h6>
+                <p class="product-price">$18.00</p>
+              </div>
+            </div>
+          </div>
+    
+          <!-- Product 6 -->
+          <div class="col">
+            <div class="card product-card">
+              <img src="img/ringClayGray.jpg" class="card-img-top product-img" alt="Product 6">
+              <div class="card-body product-info">
+                <h5 class="product-title">🪞 Sculptural Rings</h5>
+                <h6 class="product-description">Art you can wear. Matte silver and organically shaped, this ring is bold and beautiful.</h6>
+                <p class="product-price">$22.00</p>
+              </div>
+            </div>
+          </div>
+    
+          <!-- Add more products below... -->   
+        </div>
+
+        <!-- Page navigation 1 2 3 -> -->
+        <nav aria-label="Page navigation" class="mt-5 d-flex justify-content-center">
+          <ul class="pagination">
+            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#">→</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+
+
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+      }
+
+      body {
+        flex: 1;
+      }
+
+      main {
+        flex: 1;
+      }
+  
+      .page-title {
+        color: #040F2E;
+        text-align: center;
+        margin-top: 60px;
+        margin-bottom: 40px;
+        font-weight: 700;
+        font-size: 2.5rem;
+      }
+
+      .product-card {
+        border: none;
+        border-radius: 10px;
+        transition: all 0.2s ease-in-out;
+      }
+
+      .product-card:hover {
+        transform: scale(1.02);
+        box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      }
+
+      .product-img {
+        border-radius: 10px 10px 0 0;
+        object-fit: cover;
+        height: 280px;
+      }
+
+      .product-info {
+        padding: 15px;
+      }
+
+      .product-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+      }
+
+      .product-price {
+        color: #b18360;
+        font-weight: 500;
+        font-size: 1rem;
+        margin-top: 5px;
+      }
+
+      @media (max-width: 768px) {
+        .product-img {
+          height: 200px;
+        }
+      }
+
+      .pagination .page-link {
+        background-color: #1B2A40;
+        color: white;
+        border: none;
+        margin: 0 5px;
+        border-radius: 8px;
+        transition: background-color 0.3s ease;
+      }
+
+      .pagination .page-link:hover {
+        background-color: #2C3E5E; /* tono dorado más oscuro al pasar el mouse */
+        color: white;
+      }
+
+      .pagination .page-item.active .page-link {
+        background-color: #040F2E; /* tu color base de joyería */
+        border: none;
+        color: white;
+      }
+    </style>
+
+    <!--LINK TO FOOTER-->
+    <div th:replace="~{footer :: footer}"></div>
+  </body>
+</html>

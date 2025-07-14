@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marly Handmade</title>
+
+  <!-- Bootstrap + estilos -->
+  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+  <link rel="stylesheet" th:href="@{/css/header.css}">
+  <link rel="stylesheet" th:href="@{/css/footer.css}">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap">
+</head>
+<body>
+
+<!-- HEADER -->
+<div th:insert="~{header :: header}"></div>
+
+<!-- Hero Image -->
+<img th:src="@{/img/studioHorizontal.jpg}" alt="Marly Handmade Studio" class="hero-image">
+
+<!-- About Text -->
+<div class="about-content">
+  <h1>Marly Handmade</h1>
+  <p>
+    At Marly Handmade, we believe in slow creation — in objects made with care and intention. What started as a small creative spark has become a home for craftsmanship, warmth, and meaningful beauty.
+  </p>
+  <p>
+    Each piece tells a story. Each one is made by hand, with love — not by machine. We don’t just sell products; we share a part of our soul with you.
+  </p>
+</div>
+
+<!-- Meet the Maker -->
+<div class="founder-block">
+  <div class="founder-img">
+    <img th:src="@{/img/meArtisan.jpg}" alt="Maryen - Marly Handmade">
+  </div>
+  <div class="founder-text">
+    <h2>Meet the Maker</h2>
+    <p>Hi, I'm Maryen — the hands and heart behind Marly Handmade. Every piece I create comes from a place of joy, patience, and passion.</p>
+    <p>I started Marly Handmade as a way to connect with others through the art of making. It’s more than a brand — it’s a way of living with meaning and beauty in the everyday.</p>
+    <p>When you support us, you're not just buying something — you're joining a slower, more thoughtful way of life. And I’m very grateful you're here. 🌿</p>
+  </div>
+  <p class="signature">Thank you for being part of Marly Handmade. 💛</p>
+</div>
+
+<!-- FOOTER -->
+<div th:insert="~{footer :: footer}"></div>
+
+<!-- JS -->
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/js/script.js}" defer></script>
+
+<!-- CSS personalizado -->
+<style>
+  body {
+      font-family: 'Lora', serif;
+      color: #040F2E;
+      background-color: #F5E3C3;
+  }
+
+  .hero-image {
+      width: 100%;
+      height: 70vh;
+      object-fit: cover;
+      object-position: center;
+  }
+
+  .about-content {
+      max-width: 800px;
+      margin: 60px auto;
+      text-align: center;
+      padding: 0 20px;
+  }
+
+  .about-content h1 {
+      font-size: 2.8rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+  }
+
+  .about-content p {
+      font-size: 1.1rem;
+      color: #2C3E5E;
+      margin-bottom: 20px;
+  }
+
+  .founder-text p {
+      color: #2C3E5E;
+  }
+
+  .signature {
+      font-weight: 600;
+      color: #b18360;
+      font-size: 1.1rem;
+      margin-top: 40px;
+  }
+
+  .founder-block {
+      max-width: 1000px;
+      margin: 100px auto 80px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: center;
+      padding: 0 20px;
+  }
+
+  .founder-img {
+      flex: 1 1 350px;
+      text-align: center;
+  }
+
+  .founder-img img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .founder-text {
+      flex: 1 1 500px;
+  }
+
+  .founder-text h2 {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+  }
+
+  .founder-text p {
+      font-size: 1.05rem;
+      color: #444;
+      margin-bottom: 15px;
+  }
+
+  @media (max-width: 768px) {
+      .hero-image {
+          height: 50vh;
+      }
+
+      .about-content h1 {
+          font-size: 2rem;
+      }
+
+      .founder-block {
+          flex-direction: column;
+          text-align: center;
+      }
+
+      .founder-text h2 {
+          font-size: 1.5rem;
+      }
+  }
+</style>
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>Panel de Administración</title>
+  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+<div th:replace="~{header :: header}"></div>
+
+<div class="container mt-5">
+  <h2>Panel de Administración</h2>
+  <p>Bienvenido, solo los usuarios con rol <strong>ADMIN</strong> pueden ver esta página.</p>
+</div>
+
+<div th:replace="~{footer :: footer}"></div>
+</body>
+</html>
