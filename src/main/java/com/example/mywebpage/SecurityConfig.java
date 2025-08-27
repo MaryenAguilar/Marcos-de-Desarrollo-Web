@@ -62,13 +62,13 @@ public class SecurityConfig {
         };
     }
 
-    // ✅ Configuración de seguridad principal
+    // Configuración de seguridad principal
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/", "/login", "/css/**", "/js/**", "/images/**",
+                        .requestMatchers("/", "/login", "/css/**", "/js/**", "/img/**",
                                 "/newArrivals", "/aboutUs", "/rings", "/necklace", "/bracelets").permitAll()
                         .requestMatchers("/profile").hasAnyRole("USER", "ADMIN")
                         .anyRequest().authenticated()
